@@ -2,10 +2,9 @@
 - name: 'Red Hat Consulting | CodeSparta | Koffer | Collector Operators' 
   hosts: koffer
   collections:
-  - sparta.collector
   - containers.podman
   environment:
     PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
   tasks:
     - import_role:
-        name: sparta.collector.operators
+        name: operators

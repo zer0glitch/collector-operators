@@ -1,0 +1,36 @@
+---
+plugin:
+  role: 'sparta'
+  name: 'Koffer Artifact Collector | Red Hat Consulting | CodeSparta/sparta-iac'
+koffer:
+  plugin: 'sparta'
+  docker_config: '/root/.docker/config.json'
+  bundle: "{{   lookup('env', 'BUNDLE')   | default('true', true) | bool }}"
+  omnibus: "{{  lookup('env', 'OMNIBUS')  | default('true',  true) | bool  }}"
+  date: "{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}{{ ansible_date_time.hour }}"
+sparta:
+  version: "{{  lookup('env', 'VERSION')  | default('master', true) }}"
+  provider: "{{ lookup('env', 'PROVIDER') | default('aws',    true) }}"
+dir:
+  tmp: '/tmp/koffer'
+  iac: '/root/platform/iac'
+  bin: '/root/platform/bin'
+  meta: '/root/platform/meta'
+  nginx: '/root/platform/nginx'
+  koffer: '/root/koffer'
+  bundle: '/root/bundle'
+  mirror: '/root/platform/mirror'
+  secrets: '/root/platform/secrets'
+  registry: '/root/platform/mirror/docker'
+  platform: '/root/platform'
+git:
+  sparta:
+    dest: '{{ dir.iac }}/openshift'
+    url: 'https://github.com/CodeSparta/sparta.git'
+    ref: "{{   lookup('env', 'SPARTA_VERSION')  | default('master', true) }}"
+    tfinit: False
+  shaman:
+    dest: '{{ dir.iac }}/shaman'
+    url: 'https://github.com/CodeSparta/shaman.git'
+    ref: "{{   lookup('env', 'SPARTA_VERSION')  | default('master', true) }}"
+    tfinit: True
