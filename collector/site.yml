@@ -3,8 +3,9 @@
   hosts: koffer
   collections:
   - containers.podman
+  - zer0glitch.collector
   environment:
     PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
   tasks:
     - import_role:
-        name: operators
+        name: zer0glitch.collector.operators
