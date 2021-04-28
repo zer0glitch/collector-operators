@@ -3,9 +3,9 @@
   hosts: koffer
   collections:
   - containers.podman
-  - codesparta.collector
+  - sparta.collector
   environment:
     PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
   tasks:
     - import_role:
-        name: codesparta.collector.operators
+        name: sparta.collector.operators
